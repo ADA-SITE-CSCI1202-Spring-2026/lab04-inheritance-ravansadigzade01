@@ -1,47 +1,74 @@
 package week06;
-
 public class Inheritance {
-    class Person{
-        private String FirstName;
-        private String LastName;
-        private String Gender;
-        Person (String FirstName, String LastName, String Gender){
-            this.FirstName = FirstName;
-            this.LastName = LastName;
-            this.Gender = Gender;
+    class Person {
+        private String firstName;
+        private String lastName;
+        private String gender;
+        public Person(String firstName, String lastName, String gender) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.gender = gender;
         }
-        public String getFirstName(){
-            return this.FirstName;
-        }   
-        public void setFirstName(String FirstName){
-            this.FirstName = FirstName;
+        public String getFirstName() {
+            return firstName;
         }
-        public String getLastName(){
-            return this.LastName;
-        }   
-        public void setLastName(String LastName){
-            this.LastName = LastName;
+        public void setFirstName(String firstName) {
+            this.firstName = firstName;
         }
-        public String getGender(){
-            return this.Gender;
-        }   
-        public void setGender(String Gender){
-            this.Gender = Gender;
+        public String getLastName() {
+            return lastName;
         }
-        public String toString(String FirstName, String LastName){
-            StringBuilder sb = new StringBuilder();
-            sb.append(FirstName);
-            sb.append(LastName);
-            return sb.toString();
-
+        public void setLastName(String lastName) {
+            this.lastName = lastName;
         }
-        public boolean equals (Person p){
-            if (this.FirstName.equals(p.FirstName) && this.LastName.equals(p.LastName) ) {return true;}
-            return false;
+        public String getGender() {
+            return gender;
         }
-
-
+        public void setGender(String gender) {
+            this.gender = gender;
+        }
+        @Override
+        public String toString() {
+            return "First Name: " + firstName +
+                   ", Last Name: " + lastName +
+                   ", Gender: " + gender;
+        }
+        public boolean equals(Person p) {
+            return this.firstName.equals(p.firstName) &&
+                   this.lastName.equals(p.lastName) &&
+                   this.gender.equals(p.gender);
+        }
     }
-    
+        class Teacher extends Person {
 
+        private String department;
+        private String[] courses;
+        public Teacher(String firstName, String lastName, String gender,
+                       String department, String[] courses) {
+            super(firstName, lastName, gender);
+            this.department = department;
+            this.courses = courses;
+        }
+        public String getDepartment() {
+            return department;
+        }
+        public void setDepartment(String department) {
+            this.department = department;
+        }
+        public String[] getCourses() {
+            return courses;
+        }
+        public void setCourses(String[] courses) {
+            this.courses = courses;
+        }
+        @Override
+        public String toString() {
+            return super.toString() +
+                   ", Department: " + department;
+        }
+        public boolean equals(Teacher t) {
+            return super.equals(t) &&
+                   this.department.equals(t.department);
+        }
+    }
 }
